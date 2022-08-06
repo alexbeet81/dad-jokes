@@ -5,7 +5,8 @@ import Messages from "./Messages";
 import Message from "../models/message";
 
 const MessageWindow = () => {
-  let messages = [new Message("message", "dad"), new Message("message", "user"), new Message("message", "dad")]
+  const [messages, setMessages] = useState<Message[]>([]);
+//   let messages = [new Message("Hey", "dad"), new Message("I'm Hungry", "user"), new Message("Hi, Hungry. I'm Dad.", "dad")]
   //   const [messages, setMessages] = useState<Element[]>([]);
   // useState - set up array that includes type message
   // itterate through array. Check if type messge is user or dad
@@ -19,6 +20,12 @@ const MessageWindow = () => {
     // Create a dad message with punchine
     // create a user message with response to punchline
     // console.log("Works");
+
+    const newMessage = new Message("Hello", "dad");
+
+    setMessages((prevMessages) => {
+        return prevMessages.concat(newMessage);
+    });
   };
 
   return (
