@@ -1,6 +1,6 @@
-const GetJokeButton = () => {
-  const getJokeButtonHandler = () => {
-    console.log("works");
+const GetJokeButton: React.FC<{getNewJoke: () => void}> = (props) => {
+  const getJokeButtonHandler = (event: React.MouseEvent) => {
+    props.getNewJoke();
   };
 
   return (
