@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import GetJokeButton from "./GetJokeButton";
-import UserMessage from "./UserMessage";
-import DadMessage from "./DadMessage";
+import Messages from "./Messages";
+import Message from "../models/message";
 
 const MessageWindow = () => {
-  let messageArray: Array<any> = [<UserMessage />, <DadMessage />];
+  let messages = [new Message("message", "dad"), new Message("message", "user"), new Message("message", "dad")]
+  //   const [messages, setMessages] = useState<Element[]>([]);
   // useState - set up array that includes type message
   // itterate through array. Check if type messge is user or dad
 
@@ -15,7 +18,7 @@ const MessageWindow = () => {
     // Create a user message with response to set up
     // Create a dad message with punchine
     // create a user message with response to punchline
-    console.log("Works");
+    // console.log("Works");
   };
 
   return (
@@ -23,7 +26,7 @@ const MessageWindow = () => {
       <div className="mb-auto flex justify-center items-center h-16 bg-sky-700">
         <h1 className="text-3xl text-white">Dad Jokes</h1>
       </div>
-        {messageArray}
+      <Messages messages={messages}/>
       <GetJokeButton getNewJoke={getNewJokeHandler} />
     </div>
   );
