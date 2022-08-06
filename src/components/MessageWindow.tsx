@@ -2,12 +2,17 @@ import GetJokeButton from "./GetJokeButton";
 import UserMessage from "./UserMessage";
 
 const MessageWindow = () => {
-  let messageArray: Array<any> = ['test', 'test', 'test'];
+  let messageArray: Array<any> = [<UserMessage />];
   // useState - set up array that includes type message
   // itterate through array. Check if type messge is user or dad
 
   const getNewJokeHandler = () => {
-    // Push a new User Message into the message array.
+    // Call dad jokes api to get joke
+    // Create a user message asking dad for joke
+    // Create a dad message with set up
+    // Create a user message with response to set up
+    // Create a dad message with punchine
+    // create a user message with response to punchline
     console.log("Works");
   };
 
