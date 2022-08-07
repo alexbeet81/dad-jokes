@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useGetJoke } from "../hooks/use-get-joke";
 
 const DadMessage: React.FC<{ text: string }> = (props) => {
   // TEST PURPOSES - Have a message we are getting from props
