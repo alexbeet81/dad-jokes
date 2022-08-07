@@ -1,0 +1,42 @@
+/* .typingIndicator {
+    background-color: #f5f5f5;
+    width: 60px;
+    border-radius: 30%;
+    padding: 1rem 1.5rem 2rem;
+    margin: 0 auto;
+    position: relative;
+    animation: 2s pulse infinite ease-out;
+} */
+
+.typingIndicator span {
+    height: 15px;
+    width: 15px;
+    float: left;
+    margin: 0 1px;
+    background-color: #9E9EA1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.typingIndicator span:nth-child(1)
+{
+    animation: 1s blink infinite .3333s;
+}
+
+.typingIndicator span:nth-child(2)
+{
+    animation: 1s blink infinite .6666s;
+}
+
+.typingIndicator span:nth-child(3)
+{
+    animation: 1s blink infinite .9999s;
+}
+
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
