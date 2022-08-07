@@ -1,5 +1,12 @@
 const DadMessage: React.FC<{text: string}> = (props) => {
     // How to have a ... waiting animation before returning the message.
+    // Set message text to a ternery operator that checks use state
+    // Create a useState set to false
+    // Have a timer that changes the use state in a useEffect
+    // Have a random number generator that changes the time it takes to type
+    // Or take the length of the message from the api and use that to dictate how long the wait should be
+    // Timer finises and message changes.
+    // return message is hidden to replicate the dad reading the message from user
 
     return (
         <div className="flex flex-row items-center p-2 mr-5">
