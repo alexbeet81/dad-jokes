@@ -13,7 +13,7 @@ export const reponseSetUpQuestion: string[] = [
     "I don't know.",
     "Tell me.",
     "You tell me",
-    ""
+    "...?"
 ];
 
 export const responseSetUpNoQuestion: string[] = [

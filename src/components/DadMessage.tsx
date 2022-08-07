@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useGetJoke } from "../hooks/use-get-joke";
 
 const DadMessage: React.FC<{ text: string }> = (props) => {
   // TEST PURPOSES - Have a message we are getting from props
   // Have a random number generator that changes the time it takes to type
   // Or take the length of the message from the api and use that to dictate how long the wait should be
-  const pauseTime: number = (props.text.length * 2) * 100;
+  const pauseTime: number = props.text.length * 100;
   // How to have a ... waiting animation before returning the message.
   // Create a useState set to false
   // Set message text to a ternery operator that checks use state
