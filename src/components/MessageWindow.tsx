@@ -122,8 +122,8 @@ const MessageWindow = () => {
 
   return (
     <div className="h-full max-w-4xl bg-sky-50 pb-50">
-      <div className="z-50 fixed w-full flex justify-center items-center h-16 bg-sky-700">
-        <h1 className="text-3xl text-white">Dad Jokes</h1>
+      <div className="z-50 fixed w-full flex justify-center items-center h-16 bg-neutral-200">
+        <h1 className="text-3xl text-blue-900">Dad Jokes</h1>
       </div>
       <div className="absolute w-full bottom-0 mb-20">
         <Messages messages={messages} />

@@ -6,7 +6,7 @@ const GetJokeButton: React.FC<{getNewJoke: () => void, disabled: boolean}> = (pr
   const buttonText = props.disabled ? "..." : "Send Message";
 
   return (
-    <div className="fixed bottom-0 w-full z-50 flex justify-center items-center h-16 bg-sky-700">
+    <div className="fixed bottom-0 w-full z-50 flex justify-center items-center h-16 bg-neutral-200">
       <button
         disabled={props.disabled}
         onClick={getJokeButtonHandler}
