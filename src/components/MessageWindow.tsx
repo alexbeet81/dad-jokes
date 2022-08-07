@@ -17,9 +17,12 @@ const MessageWindow = () => {
   const [stage, setStage] = useState(1);
   const [messages, setMessages] = useState<Message[]>([]);
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(false);
+  const [messageid, setMessageId] = useState<number>(1);
 
   const updateMessages = (newMessage: string, type: string) => {
-    const message = new Message(newMessage, type);
+    // create an id here
+    const message = new Message(messageid, newMessage, type);
+    setMessageId((prevId) => (prevId += 1));
 
     setMessages((prevMessages) => {
       return prevMessages.concat(message);
@@ -53,19 +56,32 @@ const MessageWindow = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        console.log('timer');
-        setButtonIsDisabled(false);
+      setButtonIsDisabled(false);
     }, 1000);
 
     return () => clearTimeout(timer);
   }, [buttonIsDisabled]);
+
+  const getDadMessage = (messageType: string) => {
+    const timer = setTimeout(() => {
+      if (messageType === "setup") {
+        updateMessages(setup, "dad");
+      }
+
+      if (messageType === "punchline") {
+        updateMessages(punchine, "dad");
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  };
 
   const stageOne = () => {
     setButtonIsDisabled(true);
     // 1 - user requests a joke and dad gives set up
     const request = requestJoke[Math.floor(Math.random() * requestJoke.length)];
     updateMessages(request, "user");
-    updateMessages(setup, "dad");
+    getDadMessage("setup");
   };
 
   const stageTwo = () => {
@@ -86,8 +102,9 @@ const MessageWindow = () => {
     const reponse: string = setup.endsWith("?")
       ? reponseQuestion
       : responseNoQuestion;
+
     updateMessages(reponse, "user");
-    updateMessages(punchine, "dad");
+    getDadMessage("punchline");
   };
 
   const stageThree = () => {
@@ -123,12 +140,15 @@ const MessageWindow = () => {
   return (
     <div className="h-full max-w-4xl bg-sky-50 pb-50">
       <div className="z-50 fixed w-full flex justify-center items-center h-16 bg-neutral-200">
-        <h1 className="text-3xl text-blue-900">Dad Jokes</h1>
+        <h1 className="font-mono text-3xl text-blue-900">Dad Jokes</h1>
       </div>
       <div className="absolute w-full bottom-0 mb-20">
         <Messages messages={messages} />
       </div>
-      <GetJokeButton getNewJoke={getNewJokeHandler} disabled={buttonIsDisabled}/>
+      <GetJokeButton
+        getNewJoke={getNewJokeHandler}
+        disabled={buttonIsDisabled}
+      />
     </div>
   );
 };

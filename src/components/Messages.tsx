@@ -4,7 +4,7 @@ import MessageItem from "./MessageItem";
 const Messages: React.FC<{ messages: Message[] }> = (props) => {
 
     const newMessages = props.messages.map(message => {
-        return <MessageItem type={message.type} text={message.text}/>
+        return <MessageItem key={message.id} type={message.type} text={message.text}/>
     })
 
     return <div>{newMessages}</div>;

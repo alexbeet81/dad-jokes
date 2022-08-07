@@ -1,12 +1,12 @@
 class Message {
-    id: string;
+    id: number;
     text: string;
     type: string;
 
-    constructor(messageText: string, messageType: string) {
+    constructor(messageId: number, messageText: string, messageType: string) {
         this.text = messageText;
         this.type = messageType;
-        this.id = new Date().toISOString();
+        this.id = messageId;
     }
 }
 
