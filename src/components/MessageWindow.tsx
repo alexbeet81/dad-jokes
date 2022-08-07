@@ -122,11 +122,13 @@ const MessageWindow = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen justify-between bg-sky-50">
-      <div className="mb-auto flex justify-center items-center h-16 bg-sky-700">
+    <div className="h-full bg-sky-50 pb-50">
+      <div className="z-50 fixed w-full flex justify-center items-center h-16 bg-sky-700">
         <h1 className="text-3xl text-white">Dad Jokes</h1>
       </div>
-      <Messages messages={messages} />
+      <div className="absolute w-full bottom-0 mb-20">
+        <Messages messages={messages} />
+      </div>
       <GetJokeButton getNewJoke={getNewJokeHandler} />
     </div>
   );
