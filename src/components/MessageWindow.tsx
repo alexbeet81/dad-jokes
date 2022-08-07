@@ -16,12 +16,7 @@ const MessageWindow = () => {
   const [punchine, setPunchline] = useState<string>("");
   const [stage, setStage] = useState(1);
   const [messages, setMessages] = useState<Message[]>([]);
-  //   let messages = [new Message("Hey", "dad"), new Message("I'm Hungry", "user"), new Message("Hi, Hungry. I'm Dad.", "dad")]
-  //   const [messages, setMessages] = useState<Element[]>([]);
-  // useState - set up array that includes type message
-  // itterate through array. Check if type messge is user or dad
-
-  // Make it so that each press of the button moves the conversation along
+  const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(false);
 
   const updateMessages = (newMessage: string, type: string) => {
     const message = new Message(newMessage, type);
@@ -56,7 +51,17 @@ const MessageWindow = () => {
     getJoke();
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        console.log('timer');
+        setButtonIsDisabled(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [buttonIsDisabled]);
+
   const stageOne = () => {
+    setButtonIsDisabled(true);
     // 1 - user requests a joke and dad gives set up
     const request = requestJoke[Math.floor(Math.random() * requestJoke.length)];
     updateMessages(request, "user");
@@ -64,6 +69,7 @@ const MessageWindow = () => {
   };
 
   const stageTwo = () => {
+    setButtonIsDisabled(true);
     // 2 - user responds to the set up and dad gives punchline
     const responseNoQuestion =
       responseSetUpNoQuestion[
@@ -85,6 +91,7 @@ const MessageWindow = () => {
   };
 
   const stageThree = () => {
+    setButtonIsDisabled(true);
     const request =
       responsePunchline[Math.floor(Math.random() * responsePunchline.length)];
     updateMessages(request, "user");
@@ -111,25 +118,17 @@ const MessageWindow = () => {
       stageThree();
       setStage(1);
     }
-    // Call dad jokes api to get joke
-    // Create a user message asking dad for joke
-
-    // user message prompt joke
-    // Create a dad message with set up
-    // Create a user message with response to set up
-    // Create a dad message with punchine
-    // create a user message with response to punchline
   };
 
   return (
-    <div className="h-full bg-sky-50 pb-50">
+    <div className="h-full max-w-4xl bg-sky-50 pb-50">
       <div className="z-50 fixed w-full flex justify-center items-center h-16 bg-sky-700">
         <h1 className="text-3xl text-white">Dad Jokes</h1>
       </div>
       <div className="absolute w-full bottom-0 mb-20">
         <Messages messages={messages} />
       </div>
-      <GetJokeButton getNewJoke={getNewJokeHandler} />
+      <GetJokeButton getNewJoke={getNewJokeHandler} disabled={buttonIsDisabled}/>
     </div>
   );
 };

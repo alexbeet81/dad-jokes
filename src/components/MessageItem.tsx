@@ -1,6 +1,6 @@
 import DadMessage from "./DadMessage";
 import UserMessage from "./UserMessage";
-import Message from "../models/message";
+// import Message from "../models/message";
 
 const MessageItem: React.FC<{ text: string; type: string }> = (props) => {
   if (props.type === "dad") {
