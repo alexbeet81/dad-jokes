@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import classes from "./DadMessage.module.css";
 
 const DadMessage: React.FC<{ text: string }> = (props) => {
   // TEST PURPOSES - Have a message we are getting from props
-  const propsMessage: string = "What did the man say to the other man?";
   // Have a random number generator that changes the time it takes to type
   // Or take the length of the message from the api and use that to dictate how long the wait should be
-  const pauseTime: number = propsMessage.length * 100;
+  const pauseTime: number = (props.text.length * 2) * 100;
   // How to have a ... waiting animation before returning the message.
   // Create a useState set to false
   // Set message text to a ternery operator that checks use state
@@ -43,7 +41,7 @@ const DadMessage: React.FC<{ text: string }> = (props) => {
         className="rounded-full w-16 h-16 p-1 mr-7"
       />
       <div className="relative min-w-[110px] min-h-[50px] bg-amber-500 rounded-[10px] flex justify-center items-center text-white text-xl p-3">
-        {messageIsShown ? propsMessage : typingIndicator}
+        {messageIsShown ? props.text : typingIndicator}
         <div className="absolute w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-r-[26px] border-r-amber-500 right-[100%] top-[50%] translate-y-[-50%]" />
       </div>
     </div>
