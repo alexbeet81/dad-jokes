@@ -76,6 +76,7 @@ const MessageWindow = () => {
     return () => clearTimeout(timer);
   };
 
+  // Stage One - Sets Random user comment
   const stageOne = () => {
     setButtonIsDisabled(true);
     // 1 - user requests a joke and dad gives set up
