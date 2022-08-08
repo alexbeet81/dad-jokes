@@ -62,18 +62,14 @@ const MessageWindow = () => {
     return () => clearTimeout(timer);
   }, [buttonIsDisabled]);
 
-  const getDadMessage = (messageType: string) => {
-    const timer = setTimeout(() => {
-      if (messageType === "setup") {
-        updateMessages(setup, "dad");
-      }
+  const getDadMessage = (messageType: string) => {   
+    if (messageType === "setup") {
+      updateMessages(setup, "dad");
+    }
 
-      if (messageType === "punchline") {
-        updateMessages(punchine, "dad");
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    if (messageType === "punchline") {
+      updateMessages(punchine, "dad");
+    }
   };
 
   // Stage One - Sets Random user comment
